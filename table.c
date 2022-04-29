@@ -15,7 +15,7 @@ int solve_index (char *key, int size) {
 }
 int search (table table, char *key) {
     int cur = solve_index(key, table.msize);
-    for (int checked = 0; (table.items[cur].busy != 0) && (checked < (table.msize-1)); ++checked) {
+    for (int checked = 0; (table.items[cur].busy != 0) && (checked <= (table.msize-1)); ++checked) {
         if (strcmp (table.items[cur].key, key) == 0) {
             return cur;
         }
