@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "menu.h"
 #include "table.h"
-#include "get_str.h"
+#include "input_func.h"
 int main() {
     int choice = 0;
     char *key = NULL;
@@ -12,7 +12,8 @@ int main() {
     table.csize = 0;
     do {
         printf("Please write size of vector\n");
-        scanf("%d", &table.msize);
+        input_int(&table.msize);
+        ;
     } while (table.msize <=0);
     table.items = calloc(table.msize, sizeof(item));
     do {
@@ -37,19 +38,24 @@ int main() {
             }
             break;
         case 2:
-            
+            printf("Write a key\n");
+            scanf("%c", &t);
+            key = get_str();
+            if (delete(&table, key) == -1) {
+                printf("Element not found\n");
+            }
             break;
         case 3:
             printf("Write a key\n");
-            getchar();
+            scanf("%c", &t);
             key = get_str();
-            printf("%s", key);
             int searched = search(table, key);
             if (searched == -1) {
-                printf("\nKey not found\n");
+                printf("Key not found\n");
                 break;
             } else {
-                printf ("\nThe index of element: %d\n", searched);
+                printf ("The index of element: %d\n", searched);
+                printf("Info: %s\n",table.items[searched].info);
             }
             break;
         case 4:

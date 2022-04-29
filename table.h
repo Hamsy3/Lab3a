@@ -17,4 +17,5 @@ long long hash_function (char *key);
 int solve_index (char *key, int size);
 int search (table table, char* key);
 int insert (table *table, char *key, char *info);
+int delete (table *table, char *key);
 #endif

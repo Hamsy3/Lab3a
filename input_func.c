@@ -1,4 +1,4 @@
-#include "get_str.h"
+#include "input_func.h"
 // Реализация readline
 char *get_str()
 {
@@ -14,7 +14,7 @@ char *get_str()
             }
         }
         else if (n > 0) {
-            int chunk_len = strlen(buf);
+            int chunk_len = (int) strlen(buf);
             int str_len = len + chunk_len;
             res = realloc(res, str_len + 1);
             memcpy(res + len, buf, chunk_len);
@@ -32,4 +32,18 @@ char *get_str()
         res = calloc(1, sizeof(char));
     }
     return res;
+}
+int input_int (int *num) {
+    int a = 0;
+    do {
+        a = scanf ("%d", num);
+        if (a < 0) {
+            return 0;
+        }
+        
+        if (a == 0) {
+            scanf("%*c");
+        }
+    } while (a == 0);
+    return 1;
 }
