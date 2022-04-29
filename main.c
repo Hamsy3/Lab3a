@@ -12,8 +12,10 @@ int main() {
     table.csize = 0;
     do {
         printf("Please write size of vector\n");
-        input_int(&table.msize);
-        ;
+        if (input_int(&table.msize) == 0) {
+            printf("EOF\n");
+            return 1;
+        }
     } while (table.msize <=0);
     table.items = calloc(table.msize, sizeof(item));
     do {

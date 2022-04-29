@@ -33,7 +33,7 @@ int insert (table *table, char *key, char *info) {
         cur = ((cur+1) % table->msize);
         ++checked;
     }
-    if ((checked < table->msize) && (table->csize<=table->msize)) {
+    if (checked < table->msize) {
         table->items[cur].key = key;
         table->items[cur].info = info;
         table->items[cur].busy = 1;
