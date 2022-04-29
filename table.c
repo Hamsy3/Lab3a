@@ -47,6 +47,7 @@ int delete (table *table, char *key) {
     int searched = search (*table, key);
     if (searched != -1) {
         table->items[searched].busy = 0;
+        (table->csize--);
         return 0;
     }
     return -1;
